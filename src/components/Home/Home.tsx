@@ -2,7 +2,7 @@ import * as _React from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/system';
 import { Button, Typography } from '@mui/material';
-import TranslateIcon from '@mui/icons-material/Translate';
+
 
 //internal imports
 import homeImage from '../../assets/images/reading-hiragana-dc667116.jpg';
@@ -58,8 +58,8 @@ export const Home = (props: Props) => {
                 <MainText>
                     <Typography variant='h2'sx={{marginTop: '-20px'}}> {props.title} </Typography>
                      <ContainerButton>
-                     <Button sx={{ marginTop: '50px', marginRight: '20px'}} component={Link} to={"/translate"} variant='contained'>Translator</Button>
-                        <Button sx={{ marginTop: '50px', marginRight: '20px'}} component={Link} to={"/saved"} variant='contained'>Saved</Button>
+                     <Button sx={{ marginTop: '50px', marginRight: '20px'}} component={Link} to={myAuth === 'true' ? "/translate" : "/auth"} variant='contained'>Translator</Button>
+                     <Button sx={{ marginTop: '50px', marginRight: '20px'}} component={Link} to={myAuth === 'true' ? "/saved" : "/auth"} variant='contained'>Saved</Button>
                      </ContainerButton>
                 </MainText>
             </Main>

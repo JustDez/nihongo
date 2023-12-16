@@ -1,8 +1,8 @@
 import _React, { useState } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {styled } from '@mui/system';
 import { Button, Typography, Box } from '@mui/material';
-import TranslateIcon from '@mui/icons-material/Translate';
+// import TranslateIcon from '@mui/icons-material/Translate';
 
 
 
@@ -15,9 +15,9 @@ import { ref, getDatabase, push } from "firebase/database";
 import { NavBar } from "../sharedComponents";
 
 
-interface Props {
-    title: string
-}
+// interface Props {
+//     title: string
+// }
 
 
 // style components(Restyle for Tranlator page)
@@ -50,13 +50,13 @@ const MainText = styled('div') ({
 
 
 
-const ContainerButton = styled('div') ({
-    textAlign: 'center',
-    position: 'fixed',
-    top: '350%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)', 
-})
+// const ContainerButton = styled('div') ({
+//     textAlign: 'center',
+//     position: 'fixed',
+//     top: '350%',
+//     left: '50%',
+//     transform: 'translate(-50%, -50%)', 
+// })
 
 
 export interface SubmitProps {
@@ -91,11 +91,11 @@ export const Translate = () => {
 
     //const userText = localStorage.getItem('')
     const transData = () => {
-        const userId = localStorage.getItem('uuid')
+        const _userId = localStorage.getItem('uuid')
         const dataRef = ref(db, `translate/`)
 
         push(dataRef, translateData)
-        .then((newDataRef) => {
+        .then((_newDataRef) => {
             console.log('success')
         })
         .then(() => {

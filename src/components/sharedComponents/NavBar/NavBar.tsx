@@ -15,7 +15,7 @@ import {
     CssBaseline,
     Box
 } from '@mui/material';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import SaveIcon from '@mui/icons-material/Save';
 import TranslateIcon from '@mui/icons-material/Translate';
 import HomeIcon from '@mui/icons-material/Home';
@@ -63,7 +63,7 @@ const navStyles = {
         width: drawerWidth,
         alignItems: 'center',
         padding: theme.spacing(1),
-        // using the spread operator ... to grab all the properties from the default toolbar in theme
+        
         ...theme.mixins.toolbar, 
         justifyContent: 'flex-end'
     },
@@ -119,59 +119,60 @@ const navLinks = [
 
 ]
 
-let signInText = 'Sign In'
+// const signInText = 'Sign In'
        
-    if (myAuth === 'true') { 
-         signInText = 'Sign Out'
-    }
+//     if (myAuth === 'true') { 
+//          signInText = 'Sign Out'
+//     }
  
-    const signInButton = async () => {
-        if (myAuth === 'false') {
-            navigate('/auth')
-        } else {
-            await signOut(auth)
-            localStorage.setItem('auth', 'false')
-            localStorage.setItem('user', '')
-            localStorage.setItem('uuid', '')
-            navigate('/')
-        }
-    }
+//     const signInButton = async () => {
+//         if (myAuth === 'false') {
+//             navigate('/auth')
+//         } else {
+//             await signOut(auth)
+//             localStorage.setItem('auth', 'false')
+//             localStorage.setItem('user', '')
+//             localStorage.setItem('uuid', '')
+//             navigate('/')
+//         }
+//     }
 
     return (
         <Box sx={{display: 'flex'}}>
             <CssBaseline />
             <AppBar
-            sx={ open ? navStyles.appBarShift : navStyles.appBar}
-            position='fixed'
+                sx={ open ? navStyles.appBarShift : navStyles.appBar}
+                position='fixed'
             >
                 <Toolbar sx={ navStyles.toolbar }>
                     <IconButton 
-                            color='inherit'
-                            aria-label='open drawer'
-                            onClick = { handleDrawerOpen }
-                            edge='start'
-                            sx = { open ? navStyles.hide : navStyles.menuButton }
-                        >
-                            <TranslateIcon />
+                        color='inherit'
+                        aria-label='open drawer'
+                        onClick = { handleDrawerOpen }
+                        edge='start'
+                        sx = { open ? navStyles.hide : navStyles.menuButton }
+                    >
+                        <TranslateIcon />
                     </IconButton>
                 </Toolbar>
                 <Stack 
-                        direction='row' 
-                        justifyContent='space-between' 
-                        alignItems='center'
-                        sx = { navStyles.signInStack} >
-                            <Typography variant='body2' sx={{color: 'inherit'}}>
-                                Cool User
-                            </Typography>
-                            <Button 
-                                variant='contained'
-                                color = 'info'
-                                size = 'large'
-                                sx = {{ marginLeft: '20px'}}
-                            >
-                                Sign In
-                            </Button>
-                        </Stack>
+                    direction='row' 
+                    justifyContent='space-between' 
+                    alignItems='center'
+                    sx = { navStyles.signInStack} >
+                        <Typography variant='body2' sx={{color: 'inherit'}}>
+                            {localStorage.getItem('user')}
+                        </Typography>
+                        <Button 
+                            variant='contained'
+                            color = 'info'
+                            size = 'large'
+                            sx = {{ marginLeft: '20px'}}
+                            onClick = { () => navigate('/auth')}
+                        >
+                            Sign in
+                        </Button>
+                    </Stack>
             </AppBar>
             <Drawer
                     sx={ open ? navStyles.drawer : navStyles.hide }
@@ -181,7 +182,7 @@ let signInText = 'Sign In'
                 >
                 <Box sx = {navStyles.drawerHeader }>
                     <IconButton onClick={handleDrawerClose}>
-                        <SaveIcon />
+                        <TranslateIcon />
                     </IconButton>
                 </Box>
                 <Divider />

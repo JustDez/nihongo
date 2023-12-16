@@ -9,8 +9,7 @@ import 'firebase/auth';
 
 
 // internal imports
-import { Home, Translate, Saved} from './components';
-import { Auth } from './components';
+import { Home, Translate, Saved, Auth} from './components';
 import './index.css'
 import { theme } from './Theme/themes'; 
 import { firebaseConfig } from './firebaseConfig';
