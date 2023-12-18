@@ -119,23 +119,23 @@ const navLinks = [
 
 ]
 
-// const signInText = 'Sign In'
+    let signInText = 'Sign In'
        
-//     if (myAuth === 'true') { 
-//          signInText = 'Sign Out'
-//     }
+    if (myAuth === 'true') { 
+        signInText = 'Sign Out'
+    }
  
-//     const signInButton = async () => {
-//         if (myAuth === 'false') {
-//             navigate('/auth')
-//         } else {
-//             await signOut(auth)
-//             localStorage.setItem('auth', 'false')
-//             localStorage.setItem('user', '')
-//             localStorage.setItem('uuid', '')
-//             navigate('/')
-//         }
-//     }
+    const signInButton = async () => {
+        if (myAuth === 'false') {
+            navigate('/auth')
+        } else {
+            await signOut(auth)
+            localStorage.setItem('auth', 'false')
+            localStorage.setItem('user', '')
+            localStorage.setItem('uuid', '')
+            navigate('/')
+        }
+    }
 
     return (
         <Box sx={{display: 'flex'}}>
@@ -168,9 +168,9 @@ const navLinks = [
                             color = 'info'
                             size = 'large'
                             sx = {{ marginLeft: '20px'}}
-                            onClick = { () => navigate('/auth')}
+                            onClick = { signInButton}
                         >
-                            Sign in
+                            { signInText }
                         </Button>
                     </Stack>
             </AppBar>

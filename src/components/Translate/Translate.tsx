@@ -78,15 +78,15 @@ interface TranslateProps {
 export const Translate = () => {
     const { register, handleSubmit } = useForm<SubmitProps>({})
 
-    const [translateData, setTranslateData] = useState<TranslateProps>({})
+    const [translateData, setTranslateData] = useState<TranslateProps>({});
     const db = getDatabase()
     const onSubmit: SubmitHandler<SubmitProps> = async (data: SubmitProps, event: any) => {
         if (event) event.preventDefault(); 
 
        const translateText = await serverCalls.translator(data.sentence)
 
-       setTranslateData(translateText as TranslateProps) 
-    }
+       setTranslateData(translateText as TranslateProps); 
+    };
 
 
     //const userText = localStorage.getItem('')
